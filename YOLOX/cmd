@@ -1,0 +1,3 @@
+python tools/demo_crop.py image -f exps/example/yolox_voc/yolox_voc_s.py -c ./best_ckpt.pth --path ./black_t_112.jpg --conf 0.25 --nms 0.45 --tsize 320 --save_result --device cpu
+
+python tools/demo_tile_kyj.py image -f exps/example/yolox_voc/yolox_voc_s.py -c ./best_ckpt.pth --path ./tile/apis_tile_3_3.jpeg --conf 0.25 --nms 0.45 --tsize 320 --save_result --device cpu
