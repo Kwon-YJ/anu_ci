@@ -12,7 +12,7 @@ def get_target_img_name_list(data_dir):
 def get_jpg_and_txt(folder_name, file_name):
     if platform.system() == 'Linux':
         target_img = cv2.imread(f'{folder_name}/{file_name}.jpg')
-        with open(f'{folder_name}\\{file_name}.txt', 'r') as file:
+        with open(f'{folder_name}/{file_name}.txt', 'r') as file:
             target_txt = file.readlines()
     elif platform.system() == 'Windows':
         target_img = cv2.imread(f'{folder_name}\\{file_name}.jpg')
