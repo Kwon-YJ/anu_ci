@@ -49,7 +49,7 @@ def monitoring():
 def archieve():
     IP = request.args.get('ip')
     port = request.args.get('port')
-    db = pymysql.connect(host='localhost',port=3306,user='root',passwd='NorthTransilVania',db='VESMO')
+    db = pymysql.connect(host='localhost',port=3306,user='root',passwd='comeng123',db='VESMO')
     cur = db.cursor()
     ip_list=[]
     species_list=[]
@@ -98,7 +98,7 @@ def archieve():
 def loaddata_IP():
     post_data_list = []
     Address_list = []
-    db = pymysql.connect(host='localhost',port=3306,user='root',passwd='NorthTransilVania',db='VESMO')
+    db = pymysql.connect(host='localhost',port=3306,user='root',passwd='comeng123',db='VESMO')
     cur = db.cursor()
     try:
         cur.execute("select IP from detect_information group by IP having count(IP)>0")
@@ -130,7 +130,7 @@ def loaddata_IP():
 
 @app.route('/IPlist', methods=['POST'])
 def IPlist():
-    db = pymysql.connect(host='localhost',port=3306,user='root',passwd='NorthTransilVania',db='VESMO')
+    db = pymysql.connect(host='localhost',port=3306,user='root',passwd='comeng123',db='VESMO')
     cur = db.cursor()
     try:
         cur.execute("select IP from detect_information group by IP having COUNT(IP)>0")
@@ -146,7 +146,7 @@ def IPlist():
 
 @app.route('/loaddata',methods=['POST'])
 def loaddata():
-    db = pymysql.connect(host='localhost',port=3306,user='root',passwd='NorthTransilVania',db='VESMO')
+    db = pymysql.connect(host='localhost',port=3306,user='root',passwd='comeng123',db='VESMO')
     cur = db.cursor()
     load_data_list = []
     try:
@@ -179,7 +179,7 @@ def loaddata():
     
 @app.route('/loaddata2',methods=['POST'])
 def loaddata2():
-    db = pymysql.connect(host='localhost',port=3306,user='root',passwd='NorthTransilVania',db='VESMO')
+    db = pymysql.connect(host='localhost',port=3306,user='root',passwd='comeng123',db='VESMO')
     cur = db.cursor()
     load_data_list = []
     try:
@@ -215,7 +215,7 @@ def change_species():
     species = request.form['Species']
     if len(species)<=0:
         species = "apis"
-    db = pymysql.connect(host='localhost',port=3306,user='root',passwd='NorthTransilVania',db='VESMO')
+    db = pymysql.connect(host='localhost',port=3306,user='root',passwd='comeng123',db='VESMO')
     cur = db.cursor()
     try:
         now = datetime.now()
@@ -262,7 +262,7 @@ def change_species():
 def chart():
     date_detection=[]
     species_detection=[]
-    db = pymysql.connect(host='localhost',port=3306,user='root',passwd='NorthTransilVania',db='VESMO')
+    db = pymysql.connect(host='localhost',port=3306,user='root',passwd='comeng123',db='VESMO')
     cur = db.cursor()
     try:
         black_num=0
@@ -344,7 +344,7 @@ def chart():
 def location_name():
     date_detection=[]
     species_detection=[]
-    db = pymysql.connect(host='localhost',port=3306,user='root',passwd='NorthTransilVania',db='VESMO')
+    db = pymysql.connect(host='localhost',port=3306,user='root',passwd='comeng123',db='VESMO')
     cur = db.cursor()
     data = request.get_json()
     try:

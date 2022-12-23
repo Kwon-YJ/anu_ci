@@ -33,7 +33,7 @@ from yolox.exp import get_exp
 from yolox.utils import fuse_model, get_model_info, postprocess, vis
 from yolox.utils import visualize
 
-db = pymysql.connect(host='localhost',port=0,user='root',passwd='NorthTransilVania',db='VESMO')
+db = pymysql.connect(host='localhost',port=0,user='root',passwd='comeng123',db='VESMO')
 cur = db.cursor()
 lock=threading.Lock()
 
@@ -292,15 +292,17 @@ def image_demo(predictor, vis_folder, path, current_time, save_result,IP_Address
     global cur
     detect=0
     detect_time = time.time()
-    if os.path.isdir(path):
-        files = get_image_list(path)
-    else:
-        files = [path]
-    files.sort()
+    #if os.path.isdir(path):
+    #    files = get_image_list(path)
+    #else:
+    #    files = [path]
+    #files.sort()
+    files = [path]
     for image_name in files:
         outputs, img_info = predictor.inference(image_name)
         result_image = predictor.visual(outputs[0], img_info, predictor.confthre)
-        directory = "/home/cilab/flask_test/static/"+str(IP_Address)
+        # directory = "/home/cilab/flask_test/static/"+str(IP_Address)
+        directory = f"{os.getcwd()}/../flask_test/static/{str(IP_Address)}"
         if outputs[0] is not None:
             try:
                 save_time = time.time()
@@ -462,7 +464,8 @@ if __name__ == "__main__":
     main(exp, args)
     import logging
     logging.basicConfig(level=logging.DEBUG)
-    server = Server("220.69.240.221", 9000)
+    ip_address = socket.gethostbyname(socket.gethostname())
+    server = Server(ip_address, 9000)
     try:
         logging.info("Listening")    
         p = multiprocessing.Process(target=server.start, name="SubProcess", args=())
