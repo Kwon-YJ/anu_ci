@@ -1,4 +1,5 @@
 from sklearn.datasets import load_iris
+from sklearn.manifold import TSNE
 import pandas as pd
 import numpy as np
 
@@ -7,7 +8,7 @@ df = pd.DataFrame(data = np.c_[iris.data, iris.target],
                 columns=["sepal length", "sepal width", "petal length", 
                         "petal width", "target"])
 
-from sklearn.manifold import TSNE
+
 
 # class target 정보 제외
 train_df = df[["sepal length", "sepal width", "petal length", "petal width"]]
