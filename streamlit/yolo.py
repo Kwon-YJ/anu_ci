@@ -6,7 +6,6 @@ img_list = os.listdir("GT_old")
 
 st.sidebar.title('Settings')
 
-# Choose the model
 model_type = st.sidebar.selectbox(
     'Choose YOLO Model', ('YOLOX-s', 'YOLOX-m', 'YOLOX-l', 'YOLOX-l')
 )
@@ -22,7 +21,8 @@ placeholder = st.empty()
 if st.sidebar.button("camera on"):
     img_list = list(set(img_list))
     for img in img_list:
-        time.sleep(2)
         placeholder.image(f'GT_old//{img}', width=600)
+        time.sleep(0.01)
+        os.remove(f'GT_old//{img}')
 if st.sidebar.button("camera off"):
     placeholder.empty()
